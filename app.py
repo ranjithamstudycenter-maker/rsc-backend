@@ -6,6 +6,13 @@ import smtplib
 from email.message import EmailMessage
 from datetime import datetime, timedelta
 from flask import url_for
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("home.html")
 
 
 # -------------------- APP CONFIG --------------------
