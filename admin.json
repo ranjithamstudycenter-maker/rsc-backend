@@ -1,10 +1,4 @@
 {
-  "maths1": {
-    "file": "maths1.pdf",
-    "price": 50
-  },
-  "tnpsc1": {
-    "file": "tnpsc1.pdf",
-    "price": 100
-  }
+  "razorpay_key": "rzp_test_xxxxxxxxxx",
+  "razorpay_secret": "xxxxxxxxxxxxxxxx"
 }
