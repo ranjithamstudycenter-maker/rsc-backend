@@ -12,8 +12,24 @@ from flask import url_for
 app = Flask(__name__)
 app.secret_key = "supersecretkey123"
 
+
 PDF_FOLDER = "rsc-download"
 os.makedirs(PDF_FOLDER, exist_ok=True)
+
+# ---------------- PRODUCTS CONFIG ----------------
+PRODUCTS = {
+    "math-notes": {
+        "file": "maths_notes.pdf",
+        "title": "Maths Notes",
+        "price": 50
+    },
+    "class10-worksheets": {
+        "file": "class10_worksheets.pdf",
+        "title": "Class 10 Worksheets",
+        "price": 49
+    }
+}
+
 # ---------------- EMAIL CONFIG ----------------
 EMAIL_ID = "ranjithamstudycenter@gmail.com"
 EMAIL_PASS = "YOUR_APP_PASSWORD"
@@ -68,18 +84,24 @@ def courses():
 # -------------------- LIST PDF DOWNLOADS --------------------
 @app.route("/downloads")
 def downloads():
-    pdfs = os.listdir(PDF_FOLDER)
-    return render_template("downloads.html", pdfs=pdfs)
+    return render_template("downloads.html", products=PRODUCTS)
 
 # -------------------- REDIRECT TO PAYMENT --------------------
-@app.route("/download/<pdf_name>")
-def download(pdf_name):
-    return redirect(f"/pay?file={pdf_name}")
+@app.route("/download/<product_id>")
+def download(product_id):
+    if product_id not in PRODUCTS:
+        return "Invalid product"
+    return redirect(f"/pay?product={product_id}")
 
 # -------------------- PAYMENT PAGE --------------------
 @app.route("/pay")
 def pay():
-    file = request.args.get("file")
+    product_id = request.args.get("product")
+product = PRODUCTS.get(product_id)
+
+product["price"]
+product["title"]
+product["file"]
 
     order = razorpay_client.order.create({
         "amount": 4900,  # ₹49
@@ -97,6 +119,8 @@ def pay():
 # -------------------- PAYMENT SUCCESS --------------------
 @app.route("/success", methods=["POST"])
 def success():
+    product_id = request.args.get("product")
+file = PRODUCTS[product_id]["file"]
     file = request.form.get("file")
     email = request.form.get("email")
     phone = request.form.get("phone")
