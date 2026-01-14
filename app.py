@@ -60,6 +60,11 @@ razorpay_client = razorpay.Client(
 def home():
     return render_template("home.html")
 
+@app.route("/courses")
+def courses():
+    return render_template("courses.html")
+
+
 # -------------------- LIST PDF DOWNLOADS --------------------
 @app.route("/downloads")
 def downloads():
