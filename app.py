@@ -2,6 +2,11 @@ from flask import Flask, render_template, request, redirect, session, send_from_
 import os
 import razorpay
 import json
+import smtplib
+from email.message import EmailMessage
+from datetime import datetime, timedelta
+from flask import url_for
+
 
 # -------------------- APP CONFIG --------------------
 app = Flask(__name__)
@@ -9,6 +14,38 @@ app.secret_key = "supersecretkey123"
 
 PDF_FOLDER = "rsc-download"
 os.makedirs(PDF_FOLDER, exist_ok=True)
+# ---------------- EMAIL CONFIG ----------------
+EMAIL_ID = "ranjithamstudycenter@gmail.com"
+EMAIL_PASS = "YOUR_APP_PASSWORD"
+
+download_tokens = {}
+
+def send_email(to_email, file, link):
+    msg = EmailMessage()
+    msg["Subject"] = "Your Maths PDF – Ranjitham Study Center"
+    msg["From"] = EMAIL_ID
+    msg["To"] = to_email
+
+    msg.set_content(f"""
+Hello,
+
+Thank you for your payment.
+
+Download your Maths PDF (valid for 1 hour):
+{link}
+
+Regards,
+Ranjitham Study Center
+""")
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        server.login(EMAIL_ID, EMAIL_PASS)
+        server.send_message(msg)
+
+def whatsapp_link(phone, link):
+    msg = f"Payment successful! Download your Maths PDF (valid 1 hour): {link}"
+    return f"https://wa.me/91{phone}?text={msg.replace(' ', '%20')}"
+
 
 # -------------------- LOAD RAZORPAY KEYS --------------------
 with open("admin.json") as f:
@@ -55,8 +92,31 @@ def pay():
 # -------------------- PAYMENT SUCCESS --------------------
 @app.route("/success", methods=["POST"])
 def success():
-    pdf = request.form.get("file")
-    return send_from_directory(PDF_FOLDER, pdf, as_attachment=True)
+    file = request.form.get("file")
+    email = request.form.get("email")
+    phone = request.form.get("phone")
+
+    token = os.urandom(8).hex()
+    expiry = datetime.now() + timedelta(hours=1)
+    download_tokens[token] = {"file": file, "expiry": expiry}
+
+    secure_link = url_for("download_secure", token=token, _external=True)
+
+    if email:
+        send_email(email, file, secure_link)
+
+    wa_link = whatsapp_link(phone, secure_link) if phone else None
+
+    return render_template("success.html", whatsapp=wa_link)
+@app.route("/download-secure/<token>")
+def download_secure(token):
+    data = download_tokens.get(token)
+
+    if not data or datetime.now() > data["expiry"]:
+        return "Link expired or invalid", 403
+
+    return send_from_directory(PDF_FOLDER, data["file"], as_attachment=True)
+
 
 # -------------------- ADMIN LOGIN --------------------
 @app.route("/admin", methods=["GET", "POST"])
