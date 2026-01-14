@@ -3,6 +3,11 @@ import razorpay
 import os
 
 app = Flask(__name__)
+PDF_FOLDER = "rsc-download"
+@app.route("/downloads")
+def downloads():
+    pdfs = os.listdir(PDF_FOLDER)
+    return render_template("downloads.html", pdfs=pdfs)
 
 # Razorpay keys from Render Environment Variables
 RAZORPAY_KEY = os.environ.get("RAZORPAY_KEY")
@@ -12,7 +17,7 @@ print("Razorpay key loaded:", RAZORPAY_KEY is not None)
 
 client = razorpay.Client(auth=(RAZORPAY_KEY, RAZORPAY_SECRET))
 
-PDF_FOLDER = "static"
+
 
 # ✅ HOME PAGE
 @app.route("/")
@@ -23,10 +28,11 @@ def home():
 def download(pdf_name):
     return redirect(f"/pay/{pdf_name}")
 
-@app.route("/pay/<pdf_name>")
-def pay(pdf_name):
-    amount = 5000  # ₹50 in paise
-    currency = "INR"
+@app.route("/pay")
+def pay():
+    file = request.args.get("file")
+    return render_template("pay.html", file=file)
+
 
     order = client.order.create({
         "amount": amount,
