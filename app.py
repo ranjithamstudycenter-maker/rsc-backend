@@ -18,17 +18,32 @@ os.makedirs(PDF_FOLDER, exist_ok=True)
 
 # ---------------- PRODUCTS CONFIG ----------------
 PRODUCTS = {
-    "math-notes": {
-        "file": "maths_notes.pdf",
-        "title": "Maths Notes",
-        "price": 50
+    "math-basics-free": {
+        "file": "math_basics.pdf",
+        "title": "Math Basics (Free)",
+        "price": 0,
+        "course": "class5-7"
     },
-    "class10-worksheets": {
-        "file": "class10_worksheets.pdf",
-        "title": "Class 10 Worksheets",
-        "price": 49
+    "class7-practice-free": {
+        "file": "class7_practice.pdf",
+        "title": "Class 7 Practice Worksheet (Free)",
+        "price": 0,
+        "course": "class5-7"
+    },
+    "class10-notes": {
+        "file": "class10_notes.pdf",
+        "title": "Class 10 Maths Notes",
+        "price": 49,
+        "course": "class8-10"
+    },
+    "class12-calculus": {
+        "file": "class12_calculus.pdf",
+        "title": "Class 12 Calculus Notes",
+        "price": 99,
+        "course": "class11-12"
     }
 }
+
 
 # ---------------- EMAIL CONFIG ----------------
 EMAIL_ID = "ranjithamstudycenter@gmail.com"
@@ -94,10 +109,24 @@ def download(product_id):
     return redirect(f"/pay?product={product_id}")
 
 # -------------------- PAYMENT PAGE --------------------
-@app.route("/pay")
-def pay():
-    product_id = request.args.get("product")
-product = PRODUCTS.get(product_id)
+@app.route("/download/<product_id>")
+def download(product_id):
+    product = PRODUCTS.get(product_id)
+
+    if not product:
+        return "Invalid product"
+
+    # FREE DOWNLOAD
+    if product["price"] == 0:
+        return send_from_directory(
+            PDF_FOLDER,
+            product["file"],
+            as_attachment=True
+        )
+
+    # PAID DOWNLOAD → PAYMENT PAGE
+    return redirect(f"/pay?product={product_id}")
+
 
 product["price"]
 product["title"]
@@ -115,6 +144,19 @@ product["file"]
         order_id=order["id"],
         razorpay_key=keys["razorpay_key"]
     )
+
+@app.route("/downloads/<course>")
+def course_downloads(course):
+    filtered = {
+        pid: p for pid, p in PRODUCTS.items()
+        if p["course"] == course
+    }
+    return render_template(
+        "downloads.html",
+        products=filtered,
+        course=course
+    )
+
 
 # -------------------- PAYMENT SUCCESS --------------------
 @app.route("/success", methods=["POST"])
