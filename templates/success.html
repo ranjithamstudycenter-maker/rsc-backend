@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Success</title>
+    <title>Download Ready</title>
 </head>
-<body>
-    <h2>Payment Successful!</h2>
-    <p>Click below to download {{ pdf }}</p>
-    <a href="/static/{{ pdf }}.pdf" download>Download PDF</a>
+<body style="font-family:Poppins;text-align:center;padding:50px">
+
+<h2>✅ Payment Successful</h2>
+
+<a href="/download/{{ file }}"
+   style="padding:12px 30px;background:green;color:white;
+   text-decoration:none;border-radius:6px;">
+   Download PDF
+</a>
+
 </body>
 </html>
