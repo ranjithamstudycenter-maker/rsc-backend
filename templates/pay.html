@@ -1,65 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pay ₹50</title>
-</head>
-<body>
-
-<h2>Ranjitham Study Center</h2>
-<p>Pay ₹50 to download PDF</p>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Payment</title>
-</head>
-<body style="font-family:Poppins;text-align:center;padding:50px">
-
-<h2>🔐 Payment Required</h2>
-<p>File: <b>{{ file }}</b></p>
-<p>Price: ₹49</p>
-
-<!-- TEMP BUTTON (Later Razorpay) -->
-<a href="/success?file={{ file }}"
-   style="padding:12px 30px;background:#0b5394;color:white;
-   text-decoration:none;border-radius:6px;">
-   Pay & Download
-</a>
-
-</body>
-</html>
-
-<form action="/success" method="POST" id="payment-form">
-    <input type="hidden" name="pdf" value="{{ pdf }}">
-    <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
-</form>
-
-<button id="pay-btn">Pay ₹50</button>
-
+<title>Payment</title>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body style="text-align:center;font-family:Poppins;padding:50px">
+
+<h2>Pay ₹49 to Download</h2>
+<p>{{ file }}</p>
+
+<button id="rzp-button">Pay Now</button>
 
 <script>
 var options = {
-    "key": "{{ key }}",
-    "amount": "{{ amount }}",
+    "key": "{{ razorpay_key }}",
+    "amount": "4900",
     "currency": "INR",
     "name": "Ranjitham Study Center",
-    "description": "PDF Download",
+    "description": "Maths PDF Download",
     "order_id": "{{ order_id }}",
     "handler": function (response){
-        document.getElementById("razorpay_payment_id").value =
-            response.razorpay_payment_id;
-
-        document.getElementById("payment-form").submit();
+        window.location.href =
+        "/success?file={{ file }}&payment_id=" + response.razorpay_payment_id;
     },
     "theme": {
-        "color": "#3399cc"
+        "color": "#0b5394"
     }
 };
 
-var rzp1 = new Razorpay(options);
-
-document.getElementById("pay-btn").onclick = function(e){
-    rzp1.open();
+var rzp = new Razorpay(options);
+document.getElementById('rzp-button').onclick = function(e){
+    rzp.open();
     e.preventDefault();
 }
 </script>
