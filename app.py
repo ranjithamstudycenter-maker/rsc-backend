@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, send_from_directory
 import razorpay
+import json
 import os
 
 app = Flask(__name__)
@@ -16,6 +17,12 @@ RAZORPAY_SECRET = os.environ.get("RAZORPAY_SECRET")
 print("Razorpay key loaded:", RAZORPAY_KEY is not None)
 
 client = razorpay.Client(auth=(RAZORPAY_KEY, RAZORPAY_SECRET))
+with open("admin.json") as f:
+    keys = json.load(f)
+
+razorpay_client = razorpay.Client(
+    auth=(keys["razorpay_key"], keys["razorpay_secret"])
+)
 
 
 
@@ -31,13 +38,20 @@ def download(pdf_name):
 @app.route("/pay")
 def pay():
     file = request.args.get("file")
-    return render_template("pay.html", file=file)
 
-
-    order = client.order.create({
-        "amount": amount,
-        "currency": currency,
+    order = razorpay_client.order.create({
+        "amount": 4900,  # ₹49
+        "currency": "INR",
         "payment_capture": 1
+    })
+
+    return render_template(
+        "pay.html",
+        file=file,
+        order_id=order["id"],
+        razorpay_key=keys["razorpay_key"]
+    )
+
     })
 
     return render_template(
