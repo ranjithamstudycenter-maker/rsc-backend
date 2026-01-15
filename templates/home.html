@@ -10,67 +10,83 @@ content="Maths tuition with personalized coaching, worksheets, practice tests an
 <meta name="keywords"
 content="Maths Tuition, Maths Notes, Ranjitham Study Center">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
 
 body{
-    font-family:'Poppins',sans-serif;
     background:#f5f7fb;
     color:#333;
 }
 
 /* NAVBAR */
-nav{
-    background:#0b5394;
-    padding:15px 25px;
+.navbar{
+    background:#ffffff;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    padding:12px 30px;
     position:sticky;
     top:0;
     z-index:1000;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
 }
-nav h1{color:#fff;font-size:20px}
-nav a{
-    color:#fff;
-    margin-left:20px;
-    text-decoration:none;
-    font-weight:500;
-}
-nav a:hover{text-decoration:underline}
 
-/* HERO BANNER */
-.hero{
-    width:100%;
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
-.banner-wrapper{
-    width:100%;
+
+.brand-text h1{
+    color:#0b5394;
+    font-size:20px;
+    font-weight:700;
 }
-.banner-wrapper img{
+
+.brand-text p{
+    color:#0b5394;
+    font-size:13px;
+}
+
+.nav-center a{
+    margin:0 15px;
+    text-decoration:none;
+    color:#0b5394;
+    font-weight:600;
+}
+
+.nav-center a:hover{
+    text-decoration:underline;
+}
+
+.demo-btn{
+    background:#ffcc00;
+    color:#000;
+    padding:12px 22px;
+    border-radius:30px;
+    font-weight:700;
+    text-decoration:none;
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    0%{opacity:1}
+    50%{opacity:0.5}
+    100%{opacity:1}
+}
+
+/* HERO */
+.hero img{
     width:100%;
     height:90vh;
     object-fit:cover;
-    display:block;
-}
-
-/* BLINK BUTTON */
-.blink{
-    animation: blink 1s infinite;
-    background:#ffcc00;
-    color:#000;
-    padding:14px 30px;
-    border-radius:30px;
-    font-weight:bold;
-    text-decoration:none;
-    display:inline-block;
-    margin:20px auto;
-}
-@keyframes blink{
-    0%{opacity:1}
-    50%{opacity:0.4}
-    100%{opacity:1}
 }
 
 /* SECTIONS */
@@ -79,6 +95,7 @@ nav a:hover{text-decoration:underline}
     max-width:1100px;
     margin:auto;
 }
+
 .section h2{
     text-align:center;
     margin-bottom:40px;
@@ -91,6 +108,7 @@ nav a:hover{text-decoration:underline}
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
 }
+
 .card{
     background:white;
     padding:25px;
@@ -106,6 +124,7 @@ nav a:hover{text-decoration:underline}
     text-align:center;
     padding:60px 20px;
 }
+
 .cta a{
     background:white;
     color:#0b5394;
@@ -137,95 +156,9 @@ footer{
 }
 
 /* MOBILE */
-@media(max-width:768px){
-    .banner-wrapper img{height:60vh}
-}
-</style>
-</head>
-
-<body>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
-}
-
-/* NAVBAR */
-.navbar{
-    background:#ffffff;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:12px 30px;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-
-/* LEFT SECTION */
-.nav-left{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.brand-text h1{
-    color:#0b5394;
-    font-size:20px;
-    font-weight:700;
-    margin:0;
-}
-
-.brand-text p{
-    color:#0b5394;
-    font-size:13px;
-    margin:0;
-}
-
-/* CENTER MENU */
-.nav-center{
-    display:flex;
-    align-items:center;
-}
-
-.nav-center a{
-    margin:0 15px;
-    text-decoration:none;
-    color:#0b5394;
-    font-weight:600;
-}
-
-.nav-center a:hover{
-    text-decoration:underline;
-}
-
-/* RIGHT BUTTON */
-.demo-btn{
-    background:#ffcc00;
-    color:#000;
-    padding:12px 22px;
-    border-radius:30px;
-    font-weight:700;
-    text-decoration:none;
-    animation:blink 1s infinite;
-}
-
-/* BLINK EFFECT */
-@keyframes blink{
-    0%{opacity:1}
-    50%{opacity:0.5}
-    100%{opacity:1}
-}
-
-/* MOBILE */
 @media(max-width:900px){
-    .nav-center{
-        display:none;
-    }
+    .nav-center{display:none;}
+    .hero img{height:60vh;}
 }
 </style>
 </head>
@@ -234,19 +167,13 @@ footer{
 
 <!-- NAVBAR -->
 <nav class="navbar">
-
-    <!-- LEFT -->
     <div class="nav-left">
-        <!-- Optional logo -->
-        <!-- <img src="logo.png" style="height:40px;"> -->
-
         <div class="brand-text">
             <h1>RANJITHAM STUDY CENTER</h1>
             <p>Learn • Practice • Excel in Mathematics</p>
         </div>
     </div>
 
-    <!-- CENTER -->
     <div class="nav-center">
         <a href="/">Home</a>
         <a href="#about">About</a>
@@ -255,33 +182,24 @@ footer{
         <a href="#contact">Contact</a>
     </div>
 
-    <!-- RIGHT -->
-    <div class="nav-right">
-        <a href="#contact" class="demo-btn">🎯 FREE DEMO CLASS</a>
-    </div>
-
+    <a href="#contact" class="demo-btn">🎯 FREE DEMO CLASS</a>
 </nav>
-
-</body>
-</html>
 
 <!-- HERO -->
 <section class="hero">
-    <div class="banner-wrapper">
-        <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Banner">
-    </div>
+    <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Banner">
 </section>
 
 <!-- ABOUT -->
 <section class="section" id="about">
 <h2>About Me</h2>
 <div style="display:flex;gap:30px;flex-wrap:wrap;justify-content:center;align-items:center">
-<img src="{{ url_for('static', filename='images/sir.jpg') }}"
-     style="width:220px;border-radius:50%">
-<div style="max-width:600px">
-<p><b>Ranjitham</b> – Passionate Mathematics teacher with strong experience.</p>
-<p>Concept clarity, problem solving & confidence building for Class 5–12.</p>
-</div>
+    <img src="{{ url_for('static', filename='images/sir.jpg') }}"
+         style="width:220px;border-radius:50%">
+    <div style="max-width:600px">
+        <p><b>Ranjitham</b> – Passionate Mathematics teacher with strong experience.</p>
+        <p>Concept clarity, problem solving & confidence building for Class 5–12.</p>
+    </div>
 </div>
 </section>
 
@@ -289,14 +207,14 @@ footer{
 <section class="section">
 <h2>Student Achievements</h2>
 <div class="cards">
-<div class="card">
-<img src="{{ url_for('static', filename='images/student1.jpg') }}" style="width:120px;border-radius:50%">
-<h3>Class 10 – 95%</h3>
-</div>
-<div class="card">
-<img src="{{ url_for('static', filename='images/student2.jpg') }}" style="width:120px;border-radius:50%">
-<h3>Class 12 – 92%</h3>
-</div>
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/student1.jpg') }}" style="width:120px;border-radius:50%">
+        <h3>Class 10 – 95%</h3>
+    </div>
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/student2.jpg') }}" style="width:120px;border-radius:50%">
+        <h3>Class 12 – 92%</h3>
+    </div>
 </div>
 </section>
 
@@ -304,10 +222,10 @@ footer{
 <section class="section" id="courses">
 <h2>Our Features</h2>
 <div class="cards">
-<div class="card">Practice Tests</div>
-<div class="card">Daily Worksheets</div>
-<div class="card">Topic-wise PDFs</div>
-<div class="card">One-to-One Doubt Clearing</div>
+    <div class="card">Practice Tests</div>
+    <div class="card">Daily Worksheets</div>
+    <div class="card">Topic-wise PDFs</div>
+    <div class="card">One-to-One Doubt Clearing</div>
 </div>
 </section>
 
