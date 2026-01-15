@@ -8,7 +8,7 @@
 <meta name="description"
 content="Maths tuition with personalized coaching, worksheets, practice tests and exam preparation.">
 <meta name="keywords"
-content="Maths Tuition, Notes,">
+content="Maths Tuition, Maths Notes, Ranjitham Study Center">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -19,14 +19,6 @@ body{
     font-family:'Poppins',sans-serif;
     background:#f5f7fb;
     color:#333;
-}
-
-/* UPDATE TEXT */
-.update{
-    text-align:center;
-    color:red;
-    font-size:14px;
-    margin:8px 0;
 }
 
 /* NAVBAR */
@@ -40,7 +32,7 @@ nav{
     top:0;
     z-index:1000;
 }
-nav h2{color:#fff}
+nav h1{color:#fff;font-size:20px}
 nav a{
     color:#fff;
     margin-left:20px;
@@ -49,15 +41,19 @@ nav a{
 }
 nav a:hover{text-decoration:underline}
 
-/* HERO */
+/* HERO BANNER */
 .hero{
-    background:linear-gradient(to right,#0b5394,#073763);
-    color:white;
-    padding:90px 20px;
-    text-align:center;
+    width:100%;
 }
-.hero h1{font-size:2.6rem}
-.hero p{margin:15px 0;font-size:1.15rem}
+.banner-wrapper{
+    width:100%;
+}
+.banner-wrapper img{
+    width:100%;
+    height:90vh;
+    object-fit:cover;
+    display:block;
+}
 
 /* BLINK BUTTON */
 .blink{
@@ -69,7 +65,7 @@ nav a:hover{text-decoration:underline}
     font-weight:bold;
     text-decoration:none;
     display:inline-block;
-    margin-top:25px;
+    margin:20px auto;
 }
 @keyframes blink{
     0%{opacity:1}
@@ -100,10 +96,8 @@ nav a:hover{text-decoration:underline}
     padding:25px;
     border-radius:15px;
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    transition:transform 0.3s;
     text-align:center;
 }
-.card:hover{transform:translateY(-8px)}
 
 /* CTA */
 .cta{
@@ -119,15 +113,13 @@ nav a:hover{text-decoration:underline}
     border-radius:30px;
     text-decoration:none;
     font-weight:600;
-    display:inline-block;
-    margin-top:20px;
 }
 
 /* FOOTER */
 footer{
     background:#073763;
     color:white;
-    padding:30px 20px;
+    padding:30px;
     text-align:center;
 }
 
@@ -142,12 +134,11 @@ footer{
     border-radius:50%;
     font-size:22px;
     text-decoration:none;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* MOBILE */
-@media(max-width:600px){
-    .hero h1{font-size:2rem}
+@media(max-width:768px){
+    .banner-wrapper img{height:60vh}
 }
 </style>
 </head>
@@ -157,39 +148,36 @@ footer{
 <!-- NAVBAR -->
 <nav>
     <h1>RANJITHAM STUDY CENTER</h1>
-    <p>Learn • Practice • Excel in Mathematics</p>
     <div>
         <a href="/">Home</a>
-        <a href="#About Me">About</a>
-        <a href="#COURSES">Courses</a>
-        <a href="#DOWNLOAD">Downloads</a>
-        <a href="#Contact Us">Contact</a>
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#contact">Contact</a>
     </div>
 </nav>
+
+<center>
 <a href="#contact" class="blink">🎯 FREE DEMO CLASS</a>
+</center>
+
 <!-- HERO -->
 <section class="hero">
-    <div style="display:flex; justify-content:center; margin-top:30px;">
-    <img src="{{ url_for('static', filename='images/banner.jpg') }}"
-         style="width:100%; max-width:600px; border-radius:100px;">
-</div>
-
+    <div class="banner-wrapper">
+        <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Banner">
     </div>
 </section>
 
-<!-- ABOUT ME -->
-<section class="section" id="about-me">
+<!-- ABOUT -->
+<section class="section" id="about">
 <h2>About Me</h2>
-<div style="display:flex;flex-wrap:wrap;gap:30px;justify-content:center;align-items:center">
-
+<div style="display:flex;gap:30px;flex-wrap:wrap;justify-content:center;align-items:center">
 <img src="{{ url_for('static', filename='images/sir.jpg') }}"
-     style="width:220px;border-radius:50%;box-shadow:0 10px 25px rgba(0,0,0,0.2)">
-
+     style="width:220px;border-radius:50%">
 <div style="max-width:600px">
-<p><b>Ranjitham</b> – Passionate Mathematics teacher with strong experience in school & competitive coaching.</p>
-<p>Focus on concept clarity, problem solving, and confidence building for Class 5–12 students.</p>
+<p><b>Ranjitham</b> – Passionate Mathematics teacher with strong experience.</p>
+<p>Concept clarity, problem solving & confidence building for Class 5–12.</p>
 </div>
-
 </div>
 </section>
 
@@ -200,12 +188,10 @@ footer{
 <div class="card">
 <img src="{{ url_for('static', filename='images/student1.jpg') }}" style="width:120px;border-radius:50%">
 <h3>Class 10 – 95%</h3>
-<p>Board Exam</p>
 </div>
 <div class="card">
 <img src="{{ url_for('static', filename='images/student2.jpg') }}" style="width:120px;border-radius:50%">
 <h3>Class 12 – 92%</h3>
-<p>Mathematics</p>
 </div>
 </div>
 </section>
@@ -224,7 +210,6 @@ footer{
 <!-- DOWNLOAD -->
 <section class="cta" id="downloads">
 <h2>Download Maths Notes & Worksheets</h2>
-<p>Expert-prepared PDFs</p>
 <a href="/downloads">Download Now – ₹50</a>
 </section>
 
@@ -237,7 +222,7 @@ footer{
 </section>
 
 <footer>
-<p>© 2026 Ranjitham Study Center</p>
+© 2026 Ranjitham Study Center
 </footer>
 
 <a class="whatsapp" href="https://wa.me/917702616245" target="_blank">💬</a>
