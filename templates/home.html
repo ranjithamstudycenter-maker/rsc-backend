@@ -61,8 +61,8 @@ body{
 
 .nav-center{
     position:absolute;
-    left:50%;
-    transform:translateX(-50%);
+    left:60%;
+    transform:translateX(-60%);
 }
 
 .nav-center a{
@@ -97,7 +97,6 @@ body{
 /* HERO */
 .hero{
     height:350px;
-    width:400px;
     overflow:hidden;
 }
 
@@ -110,7 +109,7 @@ body{
     display:flex;
     width:300%;
     height:100%;
-    animation: slide 9s infinite;
+    
 }
 
 .slides img{
@@ -197,8 +196,73 @@ footer{
 @media(max-width:900px){
     .nav-center{display:none;}
 }
+    /* DOTS */
+.dots{
+    position:absolute;
+    bottom:15px;
+    width:100%;
+    text-align:center;
+}
+
+.dot{
+    height:10px;
+    width:10px;
+    margin:0 5px;
+    background:#ccc;
+    border-radius:50%;
+    display:inline-block;
+    transition:0.3s;
+}
+
+.dot.active{
+    background:#0b5394;
+}
+
+/* PAUSE when hover or touch */
+.slider:hover .slides{
+    animation-play-state: paused;
+}
+
 </style>
 </head>
+<script>
+const slides = document.getElementById("slides");
+const dots = document.querySelectorAll(".dot");
+let index = 0;
+let total = dots.length;
+
+/* Auto slide every 3s */
+let interval = setInterval(nextSlide, 3000);
+
+function nextSlide(){
+    index = (index + 1) % total;
+    updateSlide();
+}
+
+function updateSlide(){
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[index].classList.add("active");
+}
+
+/* Pause on touch (mobile) */
+slides.addEventListener("touchstart", () => {
+    clearInterval(interval);
+});
+
+/* Resume after touch */
+slides.addEventListener("touchend", () => {
+    interval = setInterval(nextSlide, 3000);
+});
+
+/* Click dots */
+dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+        index = i;
+        updateSlide();
+    });
+});
+</script>
 
 <body>
 
@@ -226,11 +290,16 @@ footer{
 
 <section class="hero" id="home">
     <div class="slider">
-        <div class="slides">
+        <div class="slides" id="slides">
             <img src="{{ url_for('static', filename='images/banner1.jpg') }}" alt="">
             <img src="{{ url_for('static', filename='images/banner2.jpg') }}" alt="">
             <img src="{{ url_for('static', filename='images/banner3.jpg') }}" alt="">
         </div>
+    </div>
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
     </div>
 </section>
 
