@@ -94,31 +94,35 @@ body{
     50%{opacity:0;}
 }
 
-/* HERO */
 .hero{
-    height:350px;
+    width:100%;
+    height:320px;
+    position:relative;
     overflow:hidden;
+    animation: slides 9s infinite;
 }
 
 .slider{
     width:100%;
     height:100%;
+    overflow:hidden;
 }
 
 .slides{
     display:flex;
     width:300%;
     height:100%;
-    
+    transition: transform 0.8s ease-in-out;
 }
 
 .slides img{
+    flex:0 0 100%;
     width:100%;
     height:100%;
-    object-fit:cover;
-    flex: 0 0 100%;
-
+    object-fit:contain;   /* 🔥 FULL IMAGE VISIBLE */
+    background:#000;      /* optional */
 }
+
 
 @keyframes slide{
     0%,33%{transform:translateX(0);}
@@ -199,19 +203,20 @@ footer{
     /* DOTS */
 .dots{
     position:absolute;
-    bottom:15px;
-    width:100%;
-    text-align:center;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10;
 }
 
 .dot{
     height:10px;
     width:10px;
     margin:0 5px;
-    background:#ccc;
+    background:#bbb;
     border-radius:50%;
     display:inline-block;
-    animation:slides 0.3s infinite
+    cursor:pointer;
 }
 
 .dot.active{
@@ -225,45 +230,6 @@ footer{
 
 </style>
 </head>
-<script>
-const slides = document.getElementById("slides");
-const dots = document.querySelectorAll(".dot");
-let index = 0;
-let total = dots.length;
-
-/* Auto slide every 3s */
-let interval = setInterval(nextSlide, 3000);
-
-function nextSlide(){
-    index = (index + 1) % total;
-    updateSlide();
-}
-
-function updateSlide(){
-    slides.style.transform = `translateX(-${index * 100}%)`;
-    dots.forEach(dot => dot.classList.remove("active"));
-    dots[index].classList.add("active");
-}
-
-/* Pause on touch (mobile) */
-slides.addEventListener("touchstart", () => {
-    clearInterval(interval);
-});
-
-/* Resume after touch */
-slides.addEventListener("touchend", () => {
-    interval = setInterval(nextSlide, 3000);
-});
-
-/* Click dots */
-dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => {
-        index = i;
-        updateSlide();
-    });
-});
-</script>
-
 <body>
 
 <nav class="navbar">
@@ -353,6 +319,41 @@ dots.forEach((dot, i) => {
 </footer>
 
 <a class="whatsapp" href="https://wa.me/917702616245" target="_blank">💬</a>
+<script>
+const slides = document.querySelector(".slides");
+const dots = document.querySelectorAll(".dot");
+
+let index = 0;
+const total = dots.length;
+
+function showSlide(i){
+    slides.style.transform = `translateX(-${i * 100}%)`;
+    dots.forEach(d => d.classList.remove("active"));
+    dots[i].classList.add("active");
+}
+
+let autoSlide = setInterval(() => {
+    index = (index + 1) % total;
+    showSlide(index);
+}, 3000);
+
+/* Pause on touch */
+slides.addEventListener("touchstart", () => clearInterval(autoSlide));
+slides.addEventListener("touchend", () => {
+    autoSlide = setInterval(() => {
+        index = (index + 1) % total;
+        showSlide(index);
+    }, 3000);
+});
+
+/* Dot click */
+dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+        index = i;
+        showSlide(index);
+    });
+});
+</script>
 
 </body>
 </html>
