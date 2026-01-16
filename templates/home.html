@@ -70,30 +70,25 @@ body{
     text-decoration:underline;
 }
 
-
 .demo-btn{
-    position:absolute;
+    position:relative;
+    letter-spacing:1px;
+    text-transform:uppercase;
     top:15px;
     right:20px;
-    width:90px;
-    height:90px;
-    background:red;
-    color:white;
-    font-weight:200;
-    text-align:center;
-    border-radius:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    color:red;
+    font-weight:700;
+    font-size:16px;
     text-decoration:none;
     animation: blink 1s infinite;
 }
 
 
+
 /* Blinking effect */
 @keyframes blink{
     0%{opacity:1;}
-    50%{opacity:0.4;}
+    50%{opacity:0;}
     100%{opacity:1;}
 }
 
@@ -203,11 +198,10 @@ footer{
         <a href="#downloads">Downloads</a>
         <a href="#contact">Contact</a>
     </div>
-    <div class="nav-right">
-        <a href="#contact" class="demo-btn">
+    
+           <a href="#contact" class="demo-btn">
     Free demo class for school students </a>
-    </div>
-</nav>
+   
 </nav>
 
 <!-- HERO -->
