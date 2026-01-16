@@ -37,20 +37,20 @@ body{
     z-index:1000;
     box-shadow:0 4px 12px rgba(0,0,0,0.08);
 }
-.logo{
-    height:100px;        /* controls logo size */
-    width:auto;
-}
 
 .nav-left{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:10px;
+}
+
+.logo{
+    height:90px;
 }
 
 .brand-text h1{
     color:#0b5394;
-    font-size:28px;
+    font-size:26px;
     font-weight:700;
 }
 
@@ -58,11 +58,13 @@ body{
     color:#0b5394;
     font-size:13px;
 }
+
 .nav-center{
     position:absolute;
-    left:65%;
-    transform:translateX(-65%);
+    left:50%;
+    transform:translateX(-50%);
 }
+
 .nav-center a{
     margin:0 15px;
     text-decoration:none;
@@ -75,38 +77,56 @@ body{
 }
 
 .demo-btn{
-    padding:20px 30px;
-    border-radius:100%;
+    padding:18px 22px;
+    border-radius:50%;
     text-align:center;
-    font-weight:bold;
+    font-weight:900;
     text-decoration:none;
     line-height:1.2;
-    position:absolute;
-    top:15px;
-    right:20px;
     color:red;
-    font-weight:900;
-    font-size:20px;
-    animation: blink 0.5s infinite;
+    font-size:16px;
+    animation: blink 0.7s infinite;
 }
 
-
-
-/* Blinking effect */
+/* Blinking */
 @keyframes blink{
-    0%{opacity:1;}
+    0%,100%{opacity:1;}
     50%{opacity:0;}
-    100%{opacity:1;}
 }
 
+/* HERO */
+.hero{
+    height:350px;
+    overflow:hidden;
+}
 
+.slider{
+    width:100%;
+    height:100%;
+}
 
+.slides{
+    display:flex;
+    width:300%;
+    height:100%;
+    animation: slide 9s infinite;
+}
 
+.slides img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
 
+@keyframes slide{
+    0%,33%{transform:translateX(0);}
+    38%,66%{transform:translateX(-100%);}
+    71%,100%{transform:translateX(-200%);}
+}
 
 /* SECTIONS */
 .section{
-    padding:30px 20px;
+    padding:40px 20px;
     max-width:1100px;
     margin:auto;
 }
@@ -173,19 +193,15 @@ footer{
 /* MOBILE */
 @media(max-width:900px){
     .nav-center{display:none;}
-    .hero img{height:60vh;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
     <div class="nav-left">
-        <img src="{{ url_for('static', filename='images/logo.jpg') }}"
-         alt="Ranjitham Study Center Logo"
-         class="logo">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
         <div class="brand-text">
             <h1>RANJITHAM STUDY CENTER</h1>
             <p>Learn • Practice • Excel in Mathematics</p>
@@ -193,131 +209,66 @@ footer{
     </div>
 
     <div class="nav-center">
-        <a href="/">Home</a>
-        <a href="#About">About</a>
-        <a href="#class">Class</a>
-        <a href="#download">Download</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#downloads">Download</a>
         <a href="#contact">Contact</a>
     </div>
-    <div class="nav-right">
-           <a href="#contact" class="demo-btn">
-    Free demo class <br>for school students </a>
-    </div>
-   
+
+    <a href="#contact" class="demo-btn">
+        Free Demo<br>Class for school students
+    </a>
 </nav>
 
-<!-- HERO SECTION -->
-<section class="hero">
-
-    <!-- SLIDER -->
+<section class="hero" id="home">
     <div class="slider">
         <div class="slides">
-            <img src="{{ url_for('static', filename='images/banner1.jpg') }}">
-            <img src="{{ url_for('static', filename='images/banner2.jpg') }}">
-            <img src="{{ url_for('static', filename='images/banner3.jpg') }}">
+            <img src="{{ url_for('static', filename='images/banner1.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/banner2.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/banner3.jpg') }}" alt="">
         </div>
     </div>
-
-    
 </section>
 
-<!-- CSS -->
-<style>
-    /* HERO */
-    .hero {
-    position: relative;
-    width: 100%;
-    height: 350px;
-    overflow: hidden;
-    object-fit:cover;
-}
-
-/* Slider container */
-.slider {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-/* Slides wrapper */
-.slides {
-    display: flex;
-    width: 300%;
-    height: 100%;
-    animation: slideRightToLeft 9s infinite;
-}
-
-/* Images */
-.slides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Right to Left animation */
-@keyframes slideRightToLeft {
-    0%   { transform: translateX(0%); }
-    33%  { transform: translateX(0%); }
-
-    38%  { transform: translateX(-100%); }
-    66%  { transform: translateX(-100%); }
-
-    71%  { transform: translateX(-200%); }
-    100% { transform: translateX(-200%); }
-}
-
-
-
-</style>
-
-
-
-<!-- ABOUT -->
 <section class="section" id="about">
 <h2>About Me</h2>
 <div style="display:flex;gap:30px;flex-wrap:wrap;justify-content:center;align-items:center">
-    <img src="{{ url_for('static', filename='images/sir.jpg') }}"
-         style="width:220px;border-radius:50%">
+    <img src="{{ url_for('static', filename='images/sir.jpg') }}" style="width:220px;border-radius:50%" alt="">
     <div style="max-width:600px">
-        <p><b>Ranjitham</b> – Passionate Mathematics teacher with strong experience.</p>
-        <p>Concept clarity, problem solving & confidence building for Class 5–12.</p>
+        <p><b>Ranjitham</b> – Passionate Mathematics teacher.</p>
+        <p>Concept clarity and confidence building for Class 5–12.</p>
     </div>
 </div>
 </section>
 
-<!-- RESULTS -->
 <section class="section">
 <h2>Student Achievements</h2>
 <div class="cards">
     <div class="card">
-        <img src="{{ url_for('static', filename='images/student1.jpg') }}" style="width:120px;border-radius:50%">
         <h3>Class 10 – 95%</h3>
     </div>
     <div class="card">
-        <img src="{{ url_for('static', filename='images/student2.jpg') }}" style="width:120px;border-radius:50%">
         <h3>Class 12 – 92%</h3>
     </div>
 </div>
 </section>
 
-<!-- COURSES -->
 <section class="section" id="courses">
 <h2>Our Features</h2>
 <div class="cards">
     <div class="card">Practice Tests</div>
     <div class="card">Daily Worksheets</div>
     <div class="card">Topic-wise PDFs</div>
-    <div class="card">One-to-One Doubt Clearing</div>
+    <div class="card">Doubt Clearing</div>
 </div>
 </section>
 
-<!-- DOWNLOAD -->
 <section class="cta" id="downloads">
 <h2>Download Maths Notes & Worksheets</h2>
 <a href="/downloads">Download Now – ₹50</a>
 </section>
 
-<!-- CONTACT -->
 <section class="section" id="contact">
 <h2>Contact Us</h2>
 <p>📍 Chennai, Tamil Nadu</p>
