@@ -94,11 +94,12 @@ body{
     50%{opacity:0;}
 }
 
-.hero{
-    width:100%;
-    height:520px;           /* controls banner height */
-    position:relative;
-    overflow:hidden;
+.hero {
+    width: 100%;
+    height: 70vh;        /* increase hero height */
+    min-height: 450px;  /* prevents small hero */
+    overflow: hidden;
+    background: #f3f6f9;
 }
 
 /* slider wrapper */
@@ -113,12 +114,12 @@ body{
     display:flex;
     width:300%;             /* 3 slides */
     height:100%;
-    transition:transform 0.8s ease-in-out;
+    transition:transform 3s ease-in-out;
 }
 
 /* each slide */
 .slide{
-    width:100%;
+   
     height:100%;
     flex:0 0 100%;
 }
@@ -127,8 +128,8 @@ body{
 .slide img{
     width:100%;
     height:100%;
-    object-fit: cover;
-    background:#eef2f7;
+    object-fit: contain;
+    background:#f3f6f9;
     display:block;
 }
 
