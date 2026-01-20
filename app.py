@@ -20,25 +20,25 @@ PRODUCTS = {
         "file": "math_basics.pdf",
         "title": "Math Basics (Free)",
         "price": 0,
-        "course": "class5-7"
+        "class": "class5-7"
     },
     "class7-practice-free": {
         "file": "class7_practice.pdf",
         "title": "Class 7 Practice Worksheet (Free)",
         "price": 0,
-        "course": "class5-7"
+        "class": "class5-7"
     },
     "class10-notes": {
         "file": "class10_notes.pdf",
         "title": "Class 10 Maths Notes",
         "price": 49,
-        "course": "class8-10"
+        "class": "class8-10"
     },
     "class12-calculus": {
         "file": "class12_calculus.pdf",
         "title": "Class 12 Calculus Notes",
         "price": 99,
-        "course": "class11-12"
+        "class": "class11-12"
     }
 }
 
@@ -92,14 +92,14 @@ def home():
 def about():
     return render_template("about.html")
 
+
 @app.route("/class")
-@app.route("/courses")
-def courses():
-    return render_template("courses.html")
+def class():
+    return render_template("class.html")
 
 @app.route("/downloads")
-def downloads():
-    return render_template("downloads.html", products=PRODUCTS)
+def download():
+    return render_template("download.html", products=PRODUCTS)
 
 @app.route("/download/<product_id>")
 def download(product_id):
