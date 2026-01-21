@@ -16,29 +16,26 @@ os.makedirs(PDF_FOLDER, exist_ok=True)
 
 # -------------------- PRODUCTS --------------------
 PRODUCTS = {
-    "math-basics-free": {
-        "file": "math_basics.pdf",
-        "title": "Math Basics (Free)",
+    "algebra-a4": {
+        "file": "algebra_A4.pdf",
+        "folder": "class6-8",
+        "title": "Algebra – A4 Notes",
         "price": 0,
-        "class": "class5-7"
+        "course": "class6-8"
     },
-    "class7-practice-free": {
-        "file": "class7_practice.pdf",
-        "title": "Class 7 Practice Worksheet (Free)",
-        "price": 0,
-        "class": "class5-7"
-    },
-    "class10-notes": {
-        "file": "class10_notes.pdf",
-        "title": "Class 10 Maths Notes",
+    "geometry-a4": {
+        "file": "geometry_A4.pdf",
+        "folder": "class9-10",
+        "title": "Geometry – A4 Notes",
         "price": 49,
-        "class": "class8-10"
+        "course": "class9-10"
     },
-    "class12-calculus": {
-        "file": "class12_calculus.pdf",
-        "title": "Class 12 Calculus Notes",
+    "calculus-a4": {
+        "file": "calculus_A4.pdf",
+        "folder": "class11-12",
+        "title": "Calculus – A4 Notes",
         "price": 99,
-        "class": "class11-12"
+        "course": "class11-12"
     }
 }
 
@@ -111,7 +108,9 @@ def download_product(product_id):
 
 
     if product["price"] == 0:
-        return send_from_directory(PDF_FOLDER, product["file"], as_attachment=True)
+        folder_path = os.path.join(PDF_FOLDER, product["folder"])
+         return send_from_directory(folder_path, product["file"], as_attachment=True)
+ 
 
     return redirect(url_for("pay", product=product_id))
 
@@ -166,7 +165,8 @@ def download_secure(token):
     if not data or datetime.now() > data["expiry"]:
         return "Link expired", 403
 
-    return send_from_directory(PDF_FOLDER, data["file"], as_attachment=True)
+    folder_path = os.path.join(PDF_FOLDER, product["folder"])
+    return send_from_directory(folder_path, product["file"], as_attachment=True)
 
 # -------------------- ADMIN --------------------
 
