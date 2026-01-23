@@ -52,28 +52,29 @@ color:#333;
 
 
 /* NAVBAR */ 
-.navbar
-{ background:#ffffff; 
-display:flex; 
-align-items:center; 
-justify-content:space-between; 
-padding:10px 20px; 
-position:sticky; 
-top:0; 
-z-index:1000; 
-box-shadow:0 4px 12px rgba(0,0,0,0.08); 
+.navbar{
+    position: fixed;          /* VERY IMPORTANT */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #f8f9fc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 1000;
+}
+/* Left logo section */
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
-.nav-left{ 
-display:flex; 
-align-items:center; 
-gap:8px; 
-} 
-
-.logo{ 
-height:90px; 
+.logo{
+    height:50px;
 }
-
 
 .brand-text h1{ 
 color:#0b5394; 
@@ -86,41 +87,45 @@ color:#0b5394;
 font-size:13px; 
 }
 
- .nav-center{ 
-position:absolute; 
-left:60%; 
-transform:translateX(-60%); 
+/* Center menu */
+.nav-center{
+    position:absolute;        /* 🔥 key for perfect center */
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:30px;
 }
 
-.nav-center a{ 
-margin:0 15px; 
-text-decoration:none; 
-color:#0b5394; 
-font-weight:600; 
-} 
+.nav-center a{
+    text-decoration:none;
+    font-weight:600;
+    color:#004aad;
+}
 
 .nav-center a:hover{ 
 text-decoration:underline; 
 } 
 
-.demo-btn{ 
-padding:18px 22px; 
-border-radius:50%; 
-text-align:center; 
-font-weight:600; 
-text-decoration:none;
-line-height:1.2; 
-color:red; 
-font-size:16px; 
-animation: blink 0.5s infinite; 
-} 
+/* Free demo class */
+.demo-btn{
+    position:absolute;        /* 🔥 keeps it top-right */
+    right:30px;
+    top:20px;
+    color:red;
+    font-weight:700;
+    text-decoration:none;
+    animation: blink 1s infinite;
+}
 
-/* Blinking */ 
-@keyframes blink{ 
-0%,100%{opacity:1;} 
-50%{opacity:0;} 
-} 
-
+@keyframes blink{
+    50%{opacity:0;}
+}
+/* Prevent page content hiding under navbar */
+body{
+    margin:0;
+    padding-top:80px;
+}
+	
 .hero{ width:100%; 
 aspect-ratio: 4/ 3; /* 🔥 same as banner image */ 
 overflow:hidden; 
@@ -764,6 +769,7 @@ input, textarea, button{
 	</script> 
 </body> 
 </html>
+
 
 
 
