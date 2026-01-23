@@ -30,6 +30,25 @@ body{
 background:#f5f7fb; 
 color:#333; 
 }
+<!-- HOME – WELCOME SECTION -->
+<section class="about-section">
+    <div class="about-container">
+        <h2>Welcome to Ranjitham Study Center</h2>
+
+        <p style="text-align:center; max-width:800px; margin:auto; font-size:17px; line-height:1.8;">
+            Ranjitham Study Center is a trusted mathematics tuition center
+            dedicated to helping students from <strong>Class 6 to Class 12</strong>
+            build strong fundamentals, improve problem-solving skills,
+            and gain confidence in examinations.
+        </p>
+
+        <div style="text-align:center; margin-top:30px;">
+            <a href="{{ url_for('about') }}" class="cta-btn">
+                Know More About Us
+            </a>
+        </div>
+    </div>
+</section>
 
 
 /* NAVBAR */ 
@@ -118,7 +137,7 @@ overflow:hidden;
 /* SLIDES CONTAINER */ 
 .slides{ 
 display:flex; 
-width:300%; /* 3 slides */ 
+width:100%; /* 3 slides */ 
 animation: slideMove 12s infinite ease-in-out; 
 animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
 } 
@@ -760,6 +779,7 @@ input, textarea, button{
 	</script> 
 </body> 
 </html>
+
 
 
 
