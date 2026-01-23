@@ -1,139 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About Us | Ranjitham Tuition Center</title>
+    <meta charset="UTF-8">
+    <title>About Us | Ranjitham Study Center</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 30px;
-    }
+    <style>
+        body{
+            font-family: 'Poppins', Arial, sans-serif;
+            margin:0;
+            background:#f5f7fb;
+            color:#333;
+            line-height:1.7;
+        }
 
-    .lang-buttons {
-      text-align: right;
-      margin-bottom: 20px;
-    }
+        .container{
+            max-width:1000px;
+            margin:auto;
+            padding:40px 20px;
+            background:#fff;
+            border-radius:12px;
+        }
 
-    .lang-buttons button {
-      padding: 6px 14px;
-      margin-left: 5px;
-      border: none;
-      background-color: #004aad;
-      color: white;
-      cursor: pointer;
-      border-radius: 4px;
-      font-size: 14px;
-    }
+        h2,h3{
+            color:#004aad;
+        }
 
-    .lang-buttons button:hover {
-      background-color: #003080;
-    }
+        h2{
+            text-align:center;
+            margin-bottom:30px;
+        }
 
-    h2, h3 {
-      color: #004aad;
-    }
-  </style>
+        /* Language buttons */
+        .lang-buttons{
+            text-align:right;
+            margin:20px;
+        }
+
+        .lang-buttons button{
+            padding:6px 14px;
+            margin-left:5px;
+            border:none;
+            background:#004aad;
+            color:white;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        .lang-buttons button:hover{
+            background:#003080;
+        }
+
+        /* Founder section */
+        .founder{
+            display:flex;
+            gap:30px;
+            flex-wrap:wrap;
+            align-items:center;
+            justify-content:center;
+            margin-top:40px;
+        }
+
+        .founder img{
+            width:220px;
+            border-radius:50%;
+            box-shadow:0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        ul{
+            margin-left:20px;
+        }
+
+        @media(max-width:600px){
+            .container{
+                padding:25px 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- Language Buttons -->
-  <div class="lang-buttons">
+<!-- Language Toggle -->
+<div class="lang-buttons">
     <button onclick="showEnglish()">English</button>
     <button onclick="showTamil()">தமிழ்</button>
-  </div>
+</div>
 
-  <!-- English Content -->
-  <div id="english">
-    <h2>About Us</h2>
-    <h3>Ranjitham Tuition Center – Chennai</h3>
+<!-- ================= ENGLISH ================= -->
+<div id="english">
+    <div class="container">
 
-    <p>
-      Ranjitham Tuition Center, Chennai provides <strong>expert mathematics coaching
-      from basic to advanced levels</strong>, focusing on strong fundamentals and
-      clear understanding of concepts.
-    </p>
+        <h2>About Ranjitham Study Center</h2>
 
-    <p>
-      With years of experience in teaching mathematics, we understand the
-      challenges students face. Our teaching style is
-      <strong>simple, step-by-step, and exam-oriented</strong>, helping students
-      gain confidence and improve academic performance.
-    </p>
+        <p>
+            <strong>Ranjitham Study Center</strong> is a dedicated mathematics tuition center
+            providing structured coaching for <strong>Class 6 to Class 12 students</strong>.
+            Our mission is to build strong fundamentals and help students approach mathematics
+            with confidence.
+        </p>
 
-    <h4>Our Teaching Style</h4>
-    <ul>
-      <li>Concept-based learning</li>
-      <li>Simple explanations with examples</li>
-      <li>Regular practice and revision</li>
-      <li>Personal attention for every student</li>
-      <li>Tests and worksheets for assessment</li>
-    </ul>
+        <p>
+            We follow a <strong>concept-based teaching approach</strong>.
+            Each topic is explained step by step, ensuring students understand the basics
+            before moving to advanced problem-solving.
+        </p>
 
-    <h4>Who Can Join?</h4>
-    <p>
-      Students from <strong>5th to 12th standard</strong><br>
-      State Board | CBSE | Matriculation
-    </p>
+        <p>
+            Regular <strong>homework, worksheets, and weekly tests</strong>
+            help students improve accuracy, speed, and exam readiness.
+        </p>
 
-    <p>
-      We provide both <strong>classroom and online support</strong> for flexible learning.
-    </p>
-  </div>
+        <p>
+            Individual attention is given to every student.
+            Slow learners receive special care, while high performers are encouraged
+            to achieve excellence.
+        </p>
 
-  <!-- Tamil Content -->
-  <div id="tamil" style="display:none;">
-    <h2>எங்களைப் பற்றி</h2>
-    <h3>Ranjitham Tuition Center – சென்னை</h3>
+        <h3>Our Teaching Style</h3>
+        <ul>
+            <li>Concept clarity with simple explanations</li>
+            <li>Exam-oriented preparation</li>
+            <li>Regular tests and revision</li>
+            <li>Personal attention and doubt clearing</li>
+        </ul>
 
-    <p>
-      சென்னையில் இயங்கி வரும் <strong>Ranjitham Tuition Center</strong>,
-      மாணவர்களுக்கு <strong>அடிப்படை முதல் மேம்பட்ட நிலை வரை</strong>
-      கணிதப் பயிற்சியை வழங்குகிறது.
-    </p>
+        <h3>Who Can Join?</h3>
+        <p>
+            Students from <strong>Class 5 to Class 12</strong><br>
+            State Board | CBSE | Matriculation
+        </p>
 
-    <p>
-      கணிதம் கற்பிப்பதில் பல ஆண்டுகள் அனுபவம் கொண்ட நாங்கள்,
-      மாணவர்கள் எதிர்கொள்ளும் சிரமங்களை புரிந்து கொண்டு
-      <strong>எளிய மற்றும் தேர்வு மையமான கற்பித்தல் முறையில்</strong>
-      வழிகாட்டுகிறோம்.
-    </p>
+        <!-- Founder -->
+        <h2>About the Founder</h2>
+        <div class="founder">
+            <img src="{{ url_for('static', filename='images/sir.jpg') }}" alt="Founder">
+            <div>
+                <p>
+                    <strong>Ranjitham</strong> is a passionate Mathematics teacher
+                    dedicated to concept clarity and confidence building.
+                </p>
+                <p>
+                    With years of teaching experience, he guides students using
+                    simple explanations, disciplined practice, and personal mentoring.
+                </p>
+            </div>
+        </div>
 
-    <h4>எங்களின் கற்பித்தல் முறை</h4>
-    <ul>
-      <li>கருத்து அடிப்படையிலான கற்றல்</li>
-      <li>எளிய விளக்கங்கள் மற்றும் எடுத்துக்காட்டுகள்</li>
-      <li>தொடர்ச்சியான பயிற்சி மற்றும் மறுபார்வை</li>
-      <li>ஒவ்வொரு மாணவருக்கும் தனிப்பட்ட கவனம்</li>
-      <li>தேர்வுகள் மற்றும் பணிப்பத்திரங்கள் மூலம் மதிப்பீடு</li>
-    </ul>
+    </div>
+</div>
 
-    <h4>யார் சேரலாம்?</h4>
-    <p>
-      <strong>5ஆம் வகுப்பு முதல் 12ஆம் வகுப்பு வரை</strong><br>
-      State Board | CBSE | Matriculation
-    </p>
+<!-- ================= TAMIL ================= -->
+<div id="tamil" style="display:none;">
+    <div class="container">
 
-    <p>
-      மாணவர்களின் வசதிக்கேற்ப <strong>நேரடி வகுப்புகள் மற்றும் ஆன்லைன் ஆதரவும்</strong>
-      வழங்கப்படுகிறது.
-    </p>
-  </div>
+        <h2>Ranjitham Study Center பற்றி</h2>
 
-  <!-- JavaScript -->
-  <script>
-    function showEnglish() {
-      document.getElementById("english").style.display = "block";
-      document.getElementById("tamil").style.display = "none";
+        <p>
+            <strong>Ranjitham Study Center</strong> என்பது
+            <strong>6ஆம் வகுப்பு முதல் 12ஆம் வகுப்பு வரை</strong>
+            மாணவர்களுக்கு கணிதப் பயிற்சி வழங்கும் ஒரு சிறந்த கல்வி மையமாகும்.
+        </p>
+
+        <p>
+            எங்களின் கற்பித்தல் முறை
+            <strong>கருத்து அடிப்படையிலானது</strong>.
+            ஒவ்வொரு பாடமும் எளிய முறையில் விளக்கப்படுகின்றது.
+        </p>
+
+        <p>
+            மாணவர்களின் முன்னேற்றத்திற்காக
+            <strong>வாராந்திர தேர்வுகள், பயிற்சி பணிப்பத்திரங்கள்</strong>
+            வழங்கப்படுகின்றன.
+        </p>
+
+        <p>
+            ஒவ்வொரு மாணவருக்கும் தனிப்பட்ட கவனம் அளிக்கப்படுகிறது.
+            மெதுவாக கற்கும் மாணவர்களுக்கு சிறப்பு வழிகாட்டல் வழங்கப்படுகிறது.
+        </p>
+
+        <h3>எங்களின் கற்பித்தல் முறை</h3>
+        <ul>
+            <li>கருத்து தெளிவு</li>
+            <li>தேர்வு மையமான பயிற்சி</li>
+            <li>தொடர்ச்சியான பயிற்சி</li>
+            <li>தனிப்பட்ட சந்தேக தீர்வு</li>
+        </ul>
+
+        <h3>யார் சேரலாம்?</h3>
+        <p>
+            <strong>5ஆம் வகுப்பு முதல் 12ஆம் வகுப்பு வரை</strong><br>
+            State Board | CBSE | Matriculation
+        </p>
+
+        <h2>நிறுவனர் பற்றி</h2>
+        <p>
+            <strong>Ranjitham</strong> அவர்கள் அனுபவமிக்க கணித ஆசிரியர்.
+            மாணவர்களின் நம்பிக்கையை வளர்த்து,
+            எளிய முறையில் கணிதத்தை கற்பிப்பதில் தேர்ச்சி பெற்றவர்.
+        </p>
+
+    </div>
+</div>
+
+<script>
+    function showEnglish(){
+        document.getElementById("english").style.display = "block";
+        document.getElementById("tamil").style.display = "none";
     }
 
-    function showTamil() {
-      document.getElementById("english").style.display = "none";
-      document.getElementById("tamil").style.display = "block";
+    function showTamil(){
+        document.getElementById("english").style.display = "none";
+        document.getElementById("tamil").style.display = "block";
     }
-  </script>
+</script>
 
 </body>
 </html>
