@@ -38,7 +38,7 @@ color:#333;
 	align-items:center; 
 	justify-content:space-between; 
 	padding:10px 20px; 
-	position:fixed; 
+	position:relative; 
 	top:0; 
 	z-index:1000; 
 	box-shadow:0 4px 12px rgba(0,0,0,0.08); 
@@ -144,7 +144,7 @@ display:block;
 
 /* dots */ 
 .dots{ 
-position:absolute; 
+position:relative; 
 bottom:15px; 
 left:50%; 
 transform:translateX(-50%); 
@@ -165,7 +165,7 @@ background:#0b5ed7;
 } 
 
 .home-section{
-    padding:120px 20px 80px;   /* top padding fixes navbar issue */
+    padding-top:120px;
     background:#ffffff;
 }
 
@@ -241,11 +241,13 @@ background:#0b5ed7;
 
             <!-- RIGHT COLUMN -->
             <div class="home-text">
-                <p>
-                    <strong>Ranjitham Study Center</strong> is a trusted mathematics
-                    tuition center dedicated to helping students from
-                    <strong>Class 6 to Class 12</strong>.
-                </p>
+              <p style="text-align:center; max-width:800px; margin:auto; font-size:17px; line-height:1.8;">
+            Ranjitham Study Center is a trusted mathematics tuition center
+            dedicated to helping students from <strong>Class 6 to Class 12</strong>
+            build strong fundamentals, improve problem-solving skills,
+            and gain confidence in examinations.
+        </p>
+
 
                 <p>
                     We focus on building strong fundamentals, improving
@@ -258,24 +260,14 @@ background:#0b5ed7;
                     and exam-focused, ensuring every student progresses
                     with clarity and confidence.
                 </p>
-		<h2>Welcome to Ranjitham Study Center</h2>
-
-        <p style="text-align:center; max-width:800px; margin:auto; font-size:17px; line-height:1.8;">
-            Ranjitham Study Center is a trusted mathematics tuition center
-            dedicated to helping students from <strong>Class 6 to Class 12</strong>
-            build strong fundamentals, improve problem-solving skills,
-            and gain confidence in examinations.
-        </p>
-
+		
+        </div>
         <div style="text-align:center; margin-top:30px;">
             <a href="{{ url_for('about') }}" class="cta-btn">
                 Know More About Us
             </a>
         </div>
-                <a href="{{ url_for('about') }}" class="home-btn">
-                    Know More About Us
-                </a>
-            </div>
+                
 
         </div>
     </div>
@@ -750,6 +742,7 @@ input, textarea, button{
 	</script> 
 </body> 
 </html>
+
 
 
 
