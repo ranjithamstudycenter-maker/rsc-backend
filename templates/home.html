@@ -118,12 +118,6 @@ width:100%; /* 3 slides */
 	height:100%;
 animation: slideMove 0.15s infinite ease-in-out; 
 } 
-@keyframes slideMove{
-    0%{transform:translateX(0);}
-    33%{transform:translateX(-100%);}
-    66%{transform:translateX(-200%);}
-    100%{transform:translateX(0);}
-}
 
 /* each slide */ 
 .slide{ 
@@ -140,6 +134,12 @@ width:100%;
 	position: relative;
   display:block; 
 
+}
+@keyframes slideMove{
+    0%{transform:translateX(0);}
+    33%{transform:translateX(-100%);}
+    66%{transform:translateX(-200%);}
+    100%{transform:translateX(0);}
 }
 
 /* dots */ 
@@ -725,6 +725,7 @@ input, textarea, button{
 	
 </body> 
 </html>
+
 
 
 
