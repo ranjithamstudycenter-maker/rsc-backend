@@ -59,7 +59,7 @@ color:#333;
 	align-items:center; 
 	justify-content:space-between; 
 	padding:10px 20px; 
-	position:absolute; 
+	position:fixed; 
 	top:0; 
 	z-index:1000; 
 	box-shadow:0 4px 12px rgba(0,0,0,0.08); 
@@ -185,10 +185,69 @@ background:#ccc;
 background:#0b5ed7; 
 } 
 
-.about-section{ 
-padding: 60px 20px; 
-background: #f5f7fa; 
-} 
+.home-section{
+    padding:120px 20px 80px;   /* top padding fixes navbar issue */
+    background:#ffffff;
+}
+
+.home-container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.home-title{
+    text-align:center;
+    font-size:32px;
+    color:#0b5394;
+    margin-bottom:50px;
+}
+
+.home-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.home-image img{
+    width:100%;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+.home-text p{
+    font-size:16px;
+    line-height:1.8;
+    margin-bottom:18px;
+    color:#333;
+}
+
+.home-btn{
+    display:inline-block;
+    margin-top:20px;
+    background:#0b5394;
+    color:white;
+    padding:14px 35px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.home-btn:hover{
+    background:#083b73;
+}
+@media(max-width:900px){
+    .home-content{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .home-text{
+        padding:0 10px;
+    }
+}
+
 
 .about-container{ 
 max-width: 1100px; 
@@ -229,7 +288,48 @@ border-radius: 10px;
 box-shadow: 0 6px 15px rgba(0,0,0,0.2); 
 }
 
-<!-- ABOUT SECTION -->
+<section class="home-section">
+    <div class="home-container">
+
+        <h2 class="home-title">Welcome to Ranjitham Study Center</h2>
+
+        <div class="home-content">
+
+            <!-- LEFT COLUMN -->
+            <div class="home-image">
+                <img src="{{ url_for('static', filename='images/classroom.jpg') }}" alt="Classroom">
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="home-text">
+                <p>
+                    <strong>Ranjitham Study Center</strong> is a trusted mathematics
+                    tuition center dedicated to helping students from
+                    <strong>Class 6 to Class 12</strong>.
+                </p>
+
+                <p>
+                    We focus on building strong fundamentals, improving
+                    problem-solving skills, and developing confidence
+                    for school and board examinations.
+                </p>
+
+                <p>
+                    Our teaching approach is concept-oriented, structured,
+                    and exam-focused, ensuring every student progresses
+                    with clarity and confidence.
+                </p>
+
+                <a href="{{ url_for('about') }}" class="home-btn">
+                    Know More About Us
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+	<!-- ABOUT SECTION -->
 <section class="About-section">
     <div class="About-container">
 
@@ -758,6 +858,7 @@ input, textarea, button{
 	</script> 
 </body> 
 </html>
+
 
 
 
