@@ -176,23 +176,7 @@ flex-shrink:0;
 .dot.active{
     background:#0b5394;
 }
-<script>
-let index = 0;
-const slides = document.querySelector(".slides");
-const dots = document.querySelectorAll(".dot");
-const totalSlides = dots.length;
 
-function showSlide(i){
-  slides.style.transform = `translateX(-${i * 100}%)`;
-  dots.forEach(dot => dot.classList.remove("active"));
-  dots[i].classList.add("active");
-}
-
-setInterval(() => {
-  index = (index + 1) % totalSlides;
-  showSlide(index);
-}, 3000);
-</script>
 
 
 .home-section{
@@ -733,7 +717,25 @@ input, textarea, button{
 </a> 
 	
 </body> 
+<script>
+let index = 0;
+const slides = document.querySelector(".slides");
+const dots = document.querySelectorAll(".dot");
+const totalSlides = dots.length;
+
+function showSlide(i){
+  slides.style.transform = `translateX(-${i * 100}%)`;
+  dots.forEach(dot => dot.classList.remove("active"));
+  dots[i].classList.add("active");
+}
+
+setInterval(() => {
+  index = (index + 1) % totalSlides;
+  showSlide(index);
+}, 3000);
+</script>	
 </html>
+
 
 
 
