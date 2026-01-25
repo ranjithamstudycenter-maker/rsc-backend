@@ -98,14 +98,15 @@ font-size:13px;
 	
 .hero{ width:100%; 
 aspect-ratio: 4/ 3; /* 🔥 same as banner image */ 
-overflow:hidden; 
+margin-top:90px;   /* below fixed navbar */
 position:relative; 
 }
 
 /* slider wrapper */ 
 .slider{ 
+	position:relative;
 width:100%; 
-overflow:hidden; 
+max-height:380px;  /* ✅ REDUCED HEIGHT */
 }
 
 
@@ -116,17 +117,6 @@ width:100%; /* 3 slides */
 animation: slideMove 12s infinite ease-in-out; 
 } 
 
-@keyframes slideMove{ 
-0% { transform: translateX(0); } 
-33% { transform: translateX(0); } 
-
-36% { transform: translateX(-100%); } 
-66% { transform: translateX(-100%); } 
-
-69% { transform: translateX(-200%); } 
-100% { transform: translateX(-200%); } 
-
-}
 
 /* each slide */ 
 .slide{ 
@@ -135,37 +125,53 @@ flex-shrink:0;
 } 
 
 /* image full fit */ 
-.slide img{ 
+.slides img{ 
 width:100%; 
-height:100%; /* 🔥 KEY */ 
+ height:380px;       /* ✅ CONTROL HEIGHT */
+	object-fit:cover;
 display:block; 
 
 }
 
 /* dots */ 
-.dots{ 
-position:relative; 
-bottom:15px; 
-left:50%; 
-transform:translateX(-50%); 
-display:flex; 
-gap:10px; 
+.dots{
+    position:absolute;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:8px;
 }
 
- .dot{
- width:10px; 
-height:10px; 
-border-radius:50%; 
-background:#ccc; 
-
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#ccc;
 }
 
-.dot.active{ 
-background:#0b5ed7; 
-} 
+.dot.active{
+    background:#0b5394;
+}
 
+@keyframes slideMove{
+    0%{transform:translateX(0);}
+    33%{transform:translateX(-100%);}
+    66%{transform:translateX(-200%);}
+    100%{transform:translateX(0);}
+}
+<script>
+let dots = document.querySelectorAll(".dot");
+let index = 0;
+
+setInterval(() => {
+    dots.forEach(d => d.classList.remove("active"));
+    dots[index].classList.add("active");
+    index = (index + 1) % dots.length;
+}, 4000);
+</script>
 .home-section{
-    padding-top:120px;
+    padding:70px 20px;
     background:#ffffff;
 }
 
@@ -193,7 +199,7 @@ background:#0b5ed7;
     border-radius:18px;
     box-shadow:0 12px 30px rgba(0,0,0,0.15);
 }
-
+	
 .home-text p{
     font-size:16px;
     line-height:1.8;
@@ -216,16 +222,16 @@ background:#0b5ed7;
 .home-btn:hover{
     background:#083b73;
 }
-@media(max-width:900px){
-    .home-content{
-        grid-template-columns:1fr;
-        text-align:center;
+@media(max-width:768px){
+    .slides img{
+        height:240px;
+    }
+
+    .slider{
+        max-height:240px;
     }
 }
-    .home-text{
-        padding:0 10px;
-    }
-}
+
 
 <section class="home-section">
     <div class="home-container">
@@ -742,6 +748,7 @@ input, textarea, button{
 	</script> 
 </body> 
 </html>
+
 
 
 
