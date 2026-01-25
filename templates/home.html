@@ -174,17 +174,20 @@ display:block;
     66%{transform:translateX(-200%);}
     100%{transform:translateX(0);}
 }
-<script>
-let dots = document.querySelectorAll(".dot");
-let index = 0;
-
-setInterval(() => {
-    dots.forEach(d => d.classList.remove("active"));
-    dots[index].classList.add("active");
-    index = (index + 1) % dots.length;
-}, 4000);
-	
-</script>
+<script> let index = 0; 
+		const slides = document.querySelector(".slides"); 
+		const dots = document.querySelectorAll(".dot"); 
+		const totalSlides = dots.length; 
+		function showSlide(i){ 
+			slides.style.transform = translateX(-${i * 100}%); 
+			dots.forEach(dot => dot.classList.remove("active")); 
+			dots[i].classList.add("active"); 
+		} 
+		setInterval(() => { 
+			index = (index + 1) % totalSlides; 
+			showSlide(index); 
+		}, 	3000); // 3 seconds 
+	</script> 
 	
 .home-section{
     padding:70px 20px;
@@ -710,33 +713,7 @@ input, textarea, button{
 	</div> 
 </section>
 
-		<section class="section"> 
-		<h2>Student Achievements</h2> 
-		<div class="cards"> 
-			<div class="card"> 
-				<h3>Class 10 – 95%</h3> 
-			</div> 
-			<div class="card"> 
-				<h3>Class 12 – 92%</h3> 
-			</div> 
-		</div> 
-	</section> 
-	
-	<section class="section" id="courses"> 
-		<h2>Our Features</h2> 
-		<div class="cards"> 
-			<div class="card">Practice Tests</div> 
-			<div class="card">Daily Worksheets</div> 
-			<div class="card">Topic-wise PDFs</div> 
-			<div class="card">Doubt Clearing</div> 
-		</div> 
-	</section>
-
-
-	<section class="cta" id="downloads"> 
-		<h2>Download Maths Notes & Worksheets</h2> 
-		<a href="/downloads">Download Now – ₹50</a> 
-	</section> <section class="section" id="contact"> 
+	<section class="section" id="contact"> 
 		<h2>Contact Us</h2> 
 		<p>📍 Chennai, Tamil Nadu</p> 
 		<p>📞 +91 77026 16245</p> 
@@ -748,22 +725,10 @@ input, textarea, button{
 	
 <a class="whatsapp" href="https://wa.me/917702616245" target="_blank">💬
 </a> 
-	<script> let index = 0; 
-		const slides = document.querySelector(".slides"); 
-		const dots = document.querySelectorAll(".dot"); 
-		const totalSlides = dots.length; 
-		function showSlide(i){ 
-			slides.style.transform = translateX(-${i * 100}%); 
-			dots.forEach(dot => dot.classList.remove("active")); 
-			dots[i].classList.add("active"); 
-		} 
-		setInterval(() => { 
-			index = (index + 1) % totalSlides; 
-			showSlide(index); 
-		}, 	3000); // 3 seconds 
-	</script> 
+	
 </body> 
 </html>
+
 
 
 
