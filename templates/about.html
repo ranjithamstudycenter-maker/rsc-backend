@@ -135,7 +135,6 @@ ul{margin-left:20px;}
 }
 
 .vm-image img{
-    width:100%;
     border-radius:18px;
     box-shadow:0 12px 30px rgba(0,0,0,0.15);
 }
@@ -148,26 +147,82 @@ ul{margin-left:20px;}
     box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
-.vm-box h3{
-    margin-bottom:10px;
-    color:#0b5394;
+/* ================= FEATURES ================= */
+.features-section{
+    padding:70px 20px;
+    background:#f5f7fa;
+}
+
+.cards{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#fff;
+    padding:28px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+/* ================= CTA ================= */
+.cta-section{
+    padding:70px 20px;
+    background:linear-gradient(135deg,#b31217,#e52d27);
+    text-align:center;
+    color:white;
+}
+
+.cta-btn{
+    background:white;
+    color:#b31217;
+    padding:14px 35px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+    background:#0b0f17;
+    color:#ccc;
+    padding:60px 20px 20px;
+}
+
+.footer-container{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+.footer-bottom{
+    text-align:center;
+    margin-top:30px;
+    font-size:14px;
+    border-top:1px solid #333;
+    padding-top:15px;
 }
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
-    .nav-center{width:100%; text-align:center; margin-top:10px;}
-    .founder{text-align:center; justify-content:center;}
-    .vm-container{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
+    .nav-center{width:100%; text-align:center;}
+    .vm-container{grid-template-columns:1fr;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- NAVBAR -->
 <nav class="navbar">
     <div class="nav-left">
         <img src="{{ url_for('static', filename='images/logo.jpg') }}" class="logo">
@@ -188,98 +243,99 @@ ul{margin-left:20px;}
     <a href="#contact" class="demo-btn">Free demo class</a>
 </nav>
 
-<!-- ================= LANGUAGE ================= -->
+<!-- LANGUAGE -->
 <div class="lang-buttons">
     <button onclick="showEnglish()">English</button>
     <button onclick="showTamil()">தமிழ்</button>
 </div>
 
-<!-- ================= ENGLISH ================= -->
-<div id="english">
-    <div class="container">
-        <h2 class="about-title">About Ranjitham Study Center</h2>
-
-        <p><strong>Ranjitham Study Center</strong> provides quality mathematics coaching for <strong>Class 6 to 12</strong> students.</p>
-        <p>We focus on <strong>concept-based teaching</strong> and step-by-step explanations.</p>
-
-        <h3>Our Teaching Style</h3>
-        <ul>
-            <li>Concept clarity</li>
-            <li>Weekly tests</li>
-            <li>Daily worksheets</li>
-            <li>Personal doubt clearing</li>
-        </ul>
-
-        <h3 style="margin-top:30px;">About the Founder</h3>
-        <div class="founder">
-            <img src="{{ url_for('static', filename='images/sir.jpg') }}">
-            <p>
-                <strong>Ranjitham</strong> is an experienced Mathematics teacher dedicated to
-                building confidence and exam excellence among students.
-            </p>
-        </div>
+<!-- ABOUT CONTENT -->
+<div id="english"> 
+    <div class="container"> 
+        <h2 class="about-title">About Ranjitham Study Center</h2> 
+        <p><strong>Ranjitham Study Center
+        </strong> provides quality mathematics coaching for 
+            <strong>Class 6 to 12
+            </strong> students.
+        </p> 
+        <p>We focus on <strong>concept-based teaching</strong> and step-by-step explanations.
+        </p> <h3>Our Teaching Style</h3> 
+        <ul> <li>Concept clarity</li> 
+            <li>Weekly tests</li> 
+            <li>Daily worksheets</li> 
+            <li>Personal doubt clearing</li> 
+        </ul> <h3 style="margin-top:30px;">About the Founder</h3> 
+        <div class="founder"> <img src="{{ url_for('static', filename='images/sir.jpg') }}"> 
+            <p> <strong>Ranjitham</strong> is an experienced Mathematics teacher dedicated to building confidence and exam excellence among students. 
+            </p> 
+        </div> 
+    </div> 
+</div> 
+    <!-- ================= TAMIL ================= --> 
+    <div id="tamil" style="display:none;"> 
+        <div class="container"> <h2 class="about-title">Ranjitham Study Center பற்றி</h2> 
+            <p><strong>6 முதல் 12 வகுப்பு</strong> மாணவர்களுக்கு கணிதத்தில் சிறந்த பயிற்சி வழங்கப்படுகிறது.
+            </p> <h3>எங்களின் கற்பித்தல் முறை</h3> 
+            <ul> <li>கருத்து தெளிவு</li> 
+                <li>வாராந்திர தேர்வுகள்</li> 
+                <li>தனிப்பட்ட கவனம்</li> 
+            </ul> 
+        </div> 
     </div>
-</div>
 
-<!-- ================= TAMIL ================= -->
-<div id="tamil" style="display:none;">
-    <div class="container">
-        <h2 class="about-title">Ranjitham Study Center பற்றி</h2>
+<!-- VISION -->
+<section class="vision-mission"> 
+    <div class="vm-container"> 
+        <div class="vm-image"> <img src="{{ url_for('static', filename='images/vision.jpg') }}"> 
+        </div> 
+        <div class="vm-content"> 
+            <h2>Our Vision & Mission</h2> 
+            <div class="vm-box"> 
+                <h3>🎯 Our Vision</h3> 
+                <p> To inspire students to love mathematics, build strong fundamentals, and develop confidence for academic excellence. 
+                </p> 
+            </div> 
+            <div class="vm-box"> 
+                <h3>🚀 Our Mission</h3> 
+                <p> To deliver concept-based, student-focused mathematics education through structured teaching, regular practice, and personal guidance. 
+                </p> 
+            </div> 
+        </div> 
+    </div> 
+</section>
 
-        <p><strong>6 முதல் 12 வகுப்பு</strong> மாணவர்களுக்கு கணிதத்தில் சிறந்த பயிற்சி வழங்கப்படுகிறது.</p>
-
-        <h3>எங்களின் கற்பித்தல் முறை</h3>
-        <ul>
-            <li>கருத்து தெளிவு</li>
-            <li>வாராந்திர தேர்வுகள்</li>
-            <li>தனிப்பட்ட கவனம்</li>
-        </ul>
-    </div>
-</div>
-
-<!-- ================= VISION & MISSION ================= -->
-<section class="vision-mission">
-    <div class="vm-container">
-
-        <div class="vm-image">
-            <img src="{{ url_for('static', filename='images/vision.jpg') }}">
-        </div>
-
-        <div class="vm-content">
-            <h2>Our Vision & Mission</h2>
-
-            <div class="vm-box">
-                <h3>🎯 Our Vision</h3>
-                <p>
-                    To inspire students to love mathematics, build strong fundamentals,
-                    and develop confidence for academic excellence.
-                </p>
-            </div>
-
-            <div class="vm-box">
-                <h3>🚀 Our Mission</h3>
-                <p>
-                    To deliver concept-based, student-focused mathematics education through
-                    structured teaching, regular practice, and personal guidance.
-                </p>
-            </div>
-        </div>
-
+<!-- FEATURES -->
+<section class="features-section">
+    <div class="cards">
+        <div class="card"><h3>Concept Clarity</h3></div>
+        <div class="card"><h3>Weekly Tests</h3></div>
+        <div class="card"><h3>Daily Worksheets</h3></div>
     </div>
 </section>
 
-<!-- ================= SCRIPT ================= -->
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Ready to improve your Maths?</h2>
+    <a href="/contact" class="cta-btn">Enroll Now</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <div>
+            <h3>Ranjitham Study Center</h3>
+            <p>Focused maths coaching for Class 6–12.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 Ranjitham Study Center
+    </div>
+</footer>
+
 <script>
-function showEnglish(){
-    document.getElementById("english").style.display="block";
-    document.getElementById("tamil").style.display="none";
-}
-function showTamil(){
-    document.getElementById("english").style.display="none";
-    document.getElementById("tamil").style.display="block";
-}
+function showEnglish(){}
+function showTamil(){}
 </script>
 
 </body>
 </html>
-c
